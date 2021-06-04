@@ -1,0 +1,42 @@
+@import "../../../../models/style/main.scss";
+
+.Body {
+    & div :first-child {
+        top: 10px;
+    }
+
+    & div:not(:first-child) {
+        margin-top: 15px;
+    }
+
+    & .Available {
+        width: 300px;
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        & span {
+            // height: 20px;
+            top: 0;
+            margin-right: 72px;
+        }
+
+        // @include respond(phone) {
+        //     width: 300px;
+        // }
+
+        // & p {
+        //     margin: 0;
+        // }
+    }
+}
+
+.Button {
+    margin: auto;
+    width: 300px;
+    text-align: left;
+
+    @include respond(phone) {
+        width: 300px;
+    }
+}

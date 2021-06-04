@@ -1,0 +1,68 @@
+@import "../../../models/style/main.scss";
+
+.Button {
+  text-align: center;
+  margin-top: 20px;
+  animation: fade 0.5s ease-in-out;
+
+  & a {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 20%;
+    text-decoration: none;
+    color: $text-body;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      color: $purple-register;
+    }
+  }
+}
+
+.Form {
+  height: 40vh !important;
+  @include respond(phone) {
+    height: 60vh !important;
+  }
+}
+
+.Register {
+  margin: auto;
+  width: 98vw;
+  height: 120vh;
+  background: $background-register;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  & .Form2 {
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 1rem;
+
+    // transform: translate(-20%, 1%);
+    width: 80vw;
+    height: 76vh;
+    // width: 40vw;
+    // height: 55vh;
+    background: $white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 17px 41px -21px rgb(0, 0, 0);
+    padding: 20px 30px;
+    border-top: 9px solid $purple-register;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    @include respond(phone) {
+      top: 55%;
+      width: 100vw;
+      height: 60vh;
+    }
+  }
+}
+
+.Body {
+  @include flexWarp;
+  margin-top: 30px;
+}

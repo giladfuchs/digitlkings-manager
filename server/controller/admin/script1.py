@@ -1,0 +1,52 @@
+import sys
+pairDirectoryNameAndId = {
+    'woman': -1,
+    'man': -2,
+    'general': -3,
+    'photo': 1,
+    'video': 2,
+    'album': 8,
+    'ballon': 10,
+    'cosmetic': 11,
+    'design': 12,
+    'digital_card': 13,
+    'flower': 14,
+    'fruit': 15,
+    'gym': 16,
+    'manSallon': 17,
+    'offna': 18,
+    'pizza': 19,
+    'womanSallon': 20,
+    'cake': 21,
+    'soccer': 22,
+    'trade': 23,
+    'mentor': 24,
+    'insta_tip': 25,
+    'gift': 26,
+    'nails': 27,
+    'dogs': 28,
+    'gymGroup': 29,
+    'clothesSport': 30,
+    'clothesWomen': 31,
+    'clothesBRANDS': 32,
+    'womenSinger': 34,
+    'menSinger': 35,
+    'gymWomen': 36,
+    'dental': 37,
+    'zhohit': 38,
+    'casePhone': 39,
+    'lirona': 40,
+    'leadDigital': 41,
+    'nothing': 42,
+    'lironaMomDance': 43,
+    'lironaEatLikeQueen': 44,
+    'lironaFreeTraining': 45,
+    'luxxiumofficial': 46,
+    'maui': 47,
+}
+def a():
+    print(pairDirectoryNameAndId)
+a()
+print('#Hello from python#')
+# print('First param:'+sys.argv[1]+'#')
+# print('Second param:'+sys.argv[2]+'#')

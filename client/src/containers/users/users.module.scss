@@ -1,0 +1,214 @@
+@import "../../models/style/main.scss";
+
+.Table {
+    // @include settingsBody;
+    overflow-x: auto;
+    table-layout: fixed;
+    @include respond(phone) {
+        font-size: $small-size;
+    }
+
+    & table {
+        margin: auto;
+        width: 75%;
+        @include respond(tab-1200) {
+            width: 100%;
+        }
+        & thead {
+            & tr {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-around;
+                align-items: center;
+                border-bottom: 1px solid $text-hint;
+
+                & th {
+                    flex: 1;
+                    padding: 12px 0px;
+                    font-weight: 500;
+                    line-height: 1.2rem;
+                    flex-wrap: nowrap;
+
+                    white-space: nowrap;
+                    color: $text-body;
+
+                    @include respond(phone) {
+                        // padding: 10px;
+
+                        padding-top: 0;
+                        line-height: 1rem;
+                    }
+                }
+            }
+        }
+
+        & tbody {
+            & tr {
+                display: flex;
+                flex-direction: row;
+
+                justify-content: space-around;
+                align-items: left;
+
+                @include respond(phone) {
+                }
+
+                // &:nth-child(even) {
+                //     background-color: #c42d2d;
+                // }
+
+                & td {
+                    direction: ltr;
+                    overflow: visible;
+
+                    min-width: 15px;
+                    text-align: left;
+                    flex: 1;
+                    display: table-cell;
+                    padding: 0px;
+                    margin: 0px;
+                    font-weight: 400;
+                    line-height: 1.43;
+                    letter-spacing: 0.01071em;
+                    color: $text-body;
+                    display: inline-block;
+                    white-space: nowrap;
+                    @include respond(phone) {
+                        // padding: 15px;
+                        padding-top: 0;
+                        // text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Header {
+    width: 90vw;
+    margin: auto;
+    animation: fade 0.5s ease-in-out;
+
+    @include respond(phone) {
+        width: 100vw;
+        margin-right: 0;
+    }
+    @include respond(tab-1200) {
+        width: 95vw;
+        margin-right: 0;
+    }
+    & .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    & button {
+        margin: 0.5rem;
+        flex-direction: row;
+        align-items: center;
+        width: fit-content;
+
+        @include respond(phone) {
+            margin-right: 10px;
+        }
+    }
+
+    & .Services {
+        @include settingsBody;
+        overflow-x: auto;
+
+        @include respond(phone) {
+            font-size: $small-size;
+        }
+
+        & table {
+            width: 100%;
+            margin-bottom: 0;
+            & .TableHeader {
+                & tr {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-around;
+                    align-items: center;
+                    border-bottom: 1px solid $text-hint;
+
+                    & th {
+                        flex: 1;
+                        padding: 12px 0px;
+                        font-weight: 500;
+                        line-height: 1.2rem;
+                        flex-wrap: nowrap;
+                        flex-direction: row-reverse;
+
+                        white-space: nowrap;
+                        color: $text-body;
+
+                        @include respond(phone) {
+                            // padding: 10px;
+
+                            padding-top: 0;
+                            line-height: 1rem;
+                        }
+                    }
+                }
+            }
+
+            & tbody {
+                & tr {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    @include respond(phone) {
+                    }
+
+                    &:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+
+                    & td {
+                        text-align: center;
+                        flex: 1;
+                        display: table-cell;
+                        padding: 12px 0px;
+                        font-weight: 400;
+                        line-height: 1.43;
+                        letter-spacing: 0.01071em;
+                        color: $text-body;
+
+                        @include respond(phone) {
+                            // padding: 15px;
+                            padding-top: 0;
+                            // text-align: right;
+                        }
+
+                        & svg {
+                            @include svg;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .Button {
+        @include settingsButton;
+        margin-top: 0;
+
+        @include respond(phone) {
+            text-align: center;
+        }
+    }
+}
+
+.Available {
+    margin: auto;
+    background: rgba(0, 0, 0, 0.08);
+    width: 100px;
+    color: $white;
+    border-radius: 5px;
+    @include respond(phone) {
+        width: 60px;
+        text-align: center;
+    }
+}
