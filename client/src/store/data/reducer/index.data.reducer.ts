@@ -6,6 +6,11 @@ import {
 } from "./user.data.reducer";
 import { successPostClient, successUpadateClient } from "./client.data.reducer";
 import {
+    successPostPayment,
+    successUpadatePayment,
+    successDeletePayment
+} from "./payment.data.reducer";
+import {
     successPostEmail,
     successUpadateEmail,
     successDeleteEmail
@@ -27,7 +32,10 @@ type allDataActionTypes =
     | actions.successDeleteEmailActionType
     | actions.successPostTargetActionType
     | actions.successPostDatesActionType
-    | actions.successDeleteDateActionType;
+    | actions.successDeleteDateActionType
+    | actions.successPostPaymentActionType
+    | actions.successUpdatePaymentActionType
+    | actions.successDeletePaymentActionType;
 
 const successGetAllData = (
     state: actions.dataState,
@@ -84,6 +92,15 @@ export const dataReducer = (
 
         case actions.dataActionsEnum.SUCCESS_DELETE_EMAIL:
             return successDeleteEmail(state, action);
+        //payment
+        case actions.dataActionsEnum.SUCCESS_POST_PAYMENT:
+            return successPostPayment(state, action);
+
+        case actions.dataActionsEnum.SUCCESS_UPDATE_PAYMENT:
+            return successUpadatePayment(state, action);
+
+        case actions.dataActionsEnum.SUCCESS_DELETE_PAYMENT:
+            return successDeletePayment(state, action);
 
         default:
             return state;

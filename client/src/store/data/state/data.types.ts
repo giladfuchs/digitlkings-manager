@@ -1,4 +1,4 @@
-import { Client, Email, User } from "../../../models";
+import { Client, Email, Payment, User } from "../../../models";
 
 export interface dataState {
     users: User[];
@@ -30,7 +30,9 @@ export enum dataActionsEnum {
     SUCCESS_UPDATE_EMAIL = "SUCCESS_UPDATE_EMAIL",
     SUCCESS_DELETE_EMAIL = "SUCCESS_DELETE_EMAIL",
 
-    UPDATE_MATRIX = "UPDATE_MATRIX"
+    SUCCESS_POST_PAYMENT = "SUCCESS_POST_PAYMENT",
+    SUCCESS_UPDATE_PAYMENT = "SUCCESS_UPDATE_PAYMENT",
+    SUCCESS_DELETE_PAYMENT = "SUCCESS_DELETE_PAYMENT"
 }
 
 export interface dataActionPattern {
@@ -115,5 +117,24 @@ export interface successUpdateEmailActionType extends dataActionPattern {
 
 export interface successDeleteEmailActionType extends dataActionPattern {
     type: dataActionsEnum.SUCCESS_DELETE_EMAIL;
+    userId: string;
+}
+
+//payment
+export interface successPostPaymentActionType extends dataActionPattern {
+    type: dataActionsEnum.SUCCESS_POST_PAYMENT;
+    payment: Payment;
+    user_id: number;
+}
+
+export interface successUpdatePaymentActionType extends dataActionPattern {
+    type: dataActionsEnum.SUCCESS_UPDATE_PAYMENT;
+    user_id: number;
+
+    addressOriginal: string;
+}
+
+export interface successDeletePaymentActionType extends dataActionPattern {
+    type: dataActionsEnum.SUCCESS_DELETE_PAYMENT;
     userId: string;
 }

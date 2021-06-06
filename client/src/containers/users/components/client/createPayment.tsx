@@ -57,7 +57,7 @@ const CreatePayment: React.FC<Props> = (props) => {
             })
         );
         const len = props.clients[props.index]["payments"].length;
-        props.postPayment(props.user_id, payment, len, props.index);
+        props.postPayment(props.user_id, payment, len);
     };
 
     return (
@@ -92,8 +92,8 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    postPayment: (user_id: any, payment: Payment, len: number, index: number) =>
-        dispatch(postPayment(user_id, payment, len, index))
+    postPayment: (user_id: any, payment: Payment, len: number) =>
+        dispatch(postPayment(user_id, payment, len))
 });
 
 export default connect<StateProps, DispatchProps>(

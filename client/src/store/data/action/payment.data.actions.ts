@@ -7,6 +7,38 @@ import { refreshTokenFunc } from "./auth.actions";
 export const postPayment = (
     client_user_id: number | string,
     payment: Payment,
+    len: number
+) => {
+    return async (dispatch: any) => {
+        try {
+            dispatch({ type: GeneralActionsEnum.START_API });
+            await API.put(
+                "client/" +
+                    client_user_id.toString() +
+                    "/payments/" +
+                    len +
+                    ".json?auth=" +
+                    localStorage.getItem("token"),
+                payment
+            );
+            await refreshTokenFunc();
+
+            dispatch({
+                type: dataActionsEnum.SUCCESS_POST_PAYMENT,
+                payment,
+                user_id: client_user_id
+            });
+
+            dispatch({ type: GeneralActionsEnum.SUCCESS_API });
+            return;
+        } catch (error) {
+            falidApiErrorHandler(dispatch, error);
+        }
+    };
+};
+export const updatePayment = (
+    client_user_id: number | string,
+    payment: Payment,
     len: number,
     index: number
 ) => {
@@ -24,12 +56,11 @@ export const postPayment = (
             );
             await refreshTokenFunc();
 
-            // dispatch({
-            //     type: dataActionsEnum.SUCCESS_POST_TARGET,
-            //     target: { [user_id]: { [user_id]: target } },
-            //     userId: client_user_id,
-            //     index
-            // });
+            dispatch({
+                type: dataActionsEnum.SUCCESS_POST_PAYMENT,
+                payment,
+                user_id: client_user_id
+            });
 
             dispatch({ type: GeneralActionsEnum.SUCCESS_API });
             return;

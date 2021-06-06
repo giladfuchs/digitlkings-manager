@@ -8,7 +8,7 @@ import {
     MdDoNotDisturbOff,
     MdDoNotDisturbOn
 } from "react-icons/md";
-import { deleteDate, updateDate } from "../../../../store";
+import { deleteDate, updatePayment } from "../../../../store";
 import { plainText, Form, Inputs, phone, Payment } from "../../../../models";
 import { getLanguage } from "../../../../store/selectors";
 
@@ -22,7 +22,7 @@ interface StateProps {
 
 interface DispatchProps {
     deleteDate: typeof deleteDate;
-    updateDate: typeof updateDate;
+    updatePayment: typeof updatePayment;
 }
 
 type Props = DispatchProps & OwnProps;
@@ -89,7 +89,7 @@ const Payments: React.FC<Props> = (props) => {
         );
     };
 
-    const updateDate = () => {
+    const updatePayment = () => {
         setForm(
             Object.assign(
                 {},
@@ -108,7 +108,7 @@ const Payments: React.FC<Props> = (props) => {
     const doneAdd = Edit ? (
         <MdDoNotDisturbOff size={25} color="#e62163" onClick={cancel} />
     ) : (
-        <MdDoNotDisturbOn size={25} color="#7467ef" onClick={updateDate} />
+        <MdDoNotDisturbOn size={25} color="#7467ef" onClick={updatePayment} />
     );
     return (
         <React.Fragment>
@@ -132,7 +132,7 @@ const Payments: React.FC<Props> = (props) => {
                         <MdSave
                             size={25}
                             color="#7467ef"
-                            onClick={updateDate}
+                            onClick={updatePayment}
                         />
                     </td>
                 ) : (
@@ -157,8 +157,12 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    updateDate: (dateOld: string, user_id: string, dateNew: string) =>
-        dispatch(updateDate(dateOld, user_id, dateNew)),
+    updatePayment: (
+        user_id: any,
+        payment: Payment,
+        len: number,
+        index: number
+    ) => dispatch(updatePayment(user_id, payment, len, index)),
     deleteDate: (date: string, user_id: string) =>
         dispatch(deleteDate(date, user_id))
 });
