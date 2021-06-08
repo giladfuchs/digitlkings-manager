@@ -8,24 +8,26 @@ import {
     MdDoNotDisturbOff,
     MdDoNotDisturbOn
 } from "react-icons/md";
-import { deleteDate, updatePayment } from "../../../../store";
+import { deletePayment, updatePayment } from "../../../../store";
 import { plainText, Form, Inputs, phone, Payment } from "../../../../models";
 import { getLanguage } from "../../../../store/selectors";
 
 interface OwnProps {
     user_id: string;
     payment: Payment;
+    payments: [Payment];
+    index: number;
 }
 interface StateProps {
     language: number;
 }
 
 interface DispatchProps {
-    deleteDate: typeof deleteDate;
+    deletePayment: typeof deletePayment;
     updatePayment: typeof updatePayment;
 }
 
-type Props = DispatchProps & OwnProps;
+type Props = DispatchProps & OwnProps & StateProps;
 
 const Payments: React.FC<Props> = (props) => {
     const [error, setError] = useState<string>("");
@@ -99,11 +101,13 @@ const Payments: React.FC<Props> = (props) => {
             )
         );
         setEdit(false);
-        // props.updateDate(
-        //     props.payment,
-        //     props.user_id,
-        //     form["date"].value.toString()
-        // );
+        const payment: Payment = Object.assign(
+            {},
+            ...Object.keys(form).map((k) => {
+                return { [k]: form[k].value };
+            })
+        );
+        props.updatePayment(props.user_id, payment, props.index);
     };
     const doneAdd = Edit ? (
         <MdDoNotDisturbOff size={25} color="#e62163" onClick={cancel} />
@@ -140,9 +144,13 @@ const Payments: React.FC<Props> = (props) => {
                         <MdDelete
                             size={15}
                             color="#e62163"
-                            // onClick={() => {
-                            //     props.deleteDate(props.payment, props.user_id);
-                            // }}
+                            onClick={() => {
+                                const payments: Payment[] = [...props.payments];
+                                payments.splice(props.index, 1);
+                                console.log(payments);
+
+                                props.deletePayment(props.user_id, payments);
+                            }}
                         />
                         <MdModeEdit size={25} color="#7467ef" onClick={edit} />
                     </td>
@@ -157,14 +165,10 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    updatePayment: (
-        user_id: any,
-        payment: Payment,
-        len: number,
-        index: number
-    ) => dispatch(updatePayment(user_id, payment, len, index)),
-    deleteDate: (date: string, user_id: string) =>
-        dispatch(deleteDate(date, user_id))
+    updatePayment: (user_id: string, payment: Payment, index: number) =>
+        dispatch(updatePayment(user_id, payment, index)),
+    deletePayment: (user_id: string, payments: Payment[]) =>
+        dispatch(deletePayment(user_id, payments))
 });
 
 export default connect<StateProps, DispatchProps>(

@@ -124,17 +124,18 @@ export interface successDeleteEmailActionType extends dataActionPattern {
 export interface successPostPaymentActionType extends dataActionPattern {
     type: dataActionsEnum.SUCCESS_POST_PAYMENT;
     payment: Payment;
-    user_id: number;
+    user_id: string;
 }
 
 export interface successUpdatePaymentActionType extends dataActionPattern {
     type: dataActionsEnum.SUCCESS_UPDATE_PAYMENT;
-    user_id: number;
-
-    addressOriginal: string;
+    user_id: string;
+    payment: Payment;
+    index: number;
 }
 
 export interface successDeletePaymentActionType extends dataActionPattern {
     type: dataActionsEnum.SUCCESS_DELETE_PAYMENT;
-    userId: string;
+    user_id: string;
+    payments: Payment[];
 }

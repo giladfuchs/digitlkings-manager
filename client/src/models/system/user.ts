@@ -8,7 +8,7 @@ export type User = {
 };
 
 export type Client = {
-    user_id: number;
+    user_id: string;
     username: string;
     usernameInstagram: string;
     email?: string;

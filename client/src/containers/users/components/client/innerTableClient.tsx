@@ -60,11 +60,13 @@ const UserInRow: React.FC<Props> = (props) => {
     useMemo(() => {
         props.client &&
             setPayments(
-                Object.keys(props.client["payments"]).map((payment) => (
+                Object.keys(props.client["payments"]).map((payment, index) => (
                     <Payment
                         key={props.client["payments"][payment]["date"]}
                         user_id={props.client.user_id.toString()}
                         payment={props.client["payments"][payment]}
+                        index={index}
+                        payments={props.client["payments"]}
                     />
                 ))
             );
