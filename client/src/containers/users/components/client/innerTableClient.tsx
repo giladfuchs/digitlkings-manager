@@ -52,6 +52,7 @@ const UserInRow: React.FC<Props> = (props) => {
                         key={target}
                         user_id={props.client.user_id.toString()}
                         targetName={props.client["targets"][target][target]}
+                        targetId={target}
                     />
                 ))
             );
@@ -81,7 +82,7 @@ const UserInRow: React.FC<Props> = (props) => {
     return (
         <React.Fragment>
             <div className={TableStyle.Table} style={{ height: "auto" }}>
-                <table key={props.client.user_id}>
+                <table key={props.client.user_id + "1"}>
                     <CreateTarget
                         user_id={props.client.user_id.toString()}
                         index={props.index}
@@ -93,9 +94,10 @@ const UserInRow: React.FC<Props> = (props) => {
                         disabled={true}
                         onClick={readDataFromTarget}
                     >
-                        {language.addTargetButton[props.language]}
+                        {language.readFromApiTargetsButton[props.language]}
                     </Button>
                 </table>
+
                 <table key={props.client.user_id}>
                     <CreatePayment
                         user_id={props.client.user_id.toString()}

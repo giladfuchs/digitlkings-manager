@@ -63,7 +63,7 @@ const ClientInRow: React.FC<Props> = (props) => {
                 </td>
                 <td>
                     {props.client.payments[props.client.payments.length - 1][
-                        "pay"
+                        "amount"
                     ] + "  "}
                 </td>
 

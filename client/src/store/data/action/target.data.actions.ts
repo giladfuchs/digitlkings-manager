@@ -12,9 +12,11 @@ export const postTarget = (
     return async (dispatch: any) => {
         try {
             // const num = Math.floor(Math.random() * 10000).toString();
-            const user_id = await (
+            let user_id = await (
                 await APINode.post("target", { username: target })
             ).data.message;
+            console.log(user_id);
+            if (typeof user_id === "object") user_id = user_id[0];
             console.log(user_id);
 
             // const a = {}
@@ -61,8 +63,6 @@ export const addTargetsWithApi = (client_user_id: any, targets: [number]) => {
             ).data.message;
             console.log(user_id);
 
-            // const a = {}
-            // a[num] = target
             dispatch({ type: GeneralActionsEnum.START_API });
 
             await refreshTokenFunc();
@@ -74,6 +74,35 @@ export const addTargetsWithApi = (client_user_id: any, targets: [number]) => {
             //     index: 1
             // });
 
+            dispatch({ type: GeneralActionsEnum.SUCCESS_API });
+            return;
+        } catch (error) {
+            falidApiErrorHandler(dispatch, error);
+        }
+    };
+};
+
+export const deleteTarget = (target: string, user_id: string) => {
+    return async (dispatch: any) => {
+        try {
+            dispatch({ type: GeneralActionsEnum.START_API });
+
+            await API.delete(
+                "client/" +
+                    user_id +
+                    "/targets/" +
+                    target +
+                    ".json?auth=" +
+                    localStorage.getItem("token")
+            );
+            await refreshTokenFunc();
+            console.log(target, user_id);
+
+            // dispatch({
+            //     type: dataActionsEnum.SUCCESS_DELETE_DATE,
+            //     user_id,
+            //     date: target
+            // });
             dispatch({ type: GeneralActionsEnum.SUCCESS_API });
             return;
         } catch (error) {

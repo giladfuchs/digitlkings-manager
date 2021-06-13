@@ -103,25 +103,3 @@ export const deleteDate = (date: string, user_id: string) => {
         }
     };
 };
-
-export const getDate = (service: any) => {
-    return async (dispatch: any) => {
-        try {
-            dispatch({ type: GeneralActionsEnum.START_API });
-            // const res = await API.post("admin/"+ service +".json", data);
-            const res = await API.get("date/" + service + ".json");
-
-            dispatch({
-                type: dataActionsEnum.SUCCESS_POST_USER,
-                service: service
-            });
-
-            dispatch({ type: GeneralActionsEnum.SUCCESS_API });
-            return;
-        } catch (error) {
-            console.log(error);
-
-            falidApiErrorHandler(dispatch, error);
-        }
-    };
-};

@@ -8,12 +8,13 @@ import {
     MdDoNotDisturbOff,
     MdDoNotDisturbOn
 } from "react-icons/md";
-import { deleteDate, updateDate } from "../../../../store";
+import { deleteTarget, updateDate } from "../../../../store";
 import { plainText, Form, Inputs } from "../../../../models";
 import { getLanguage } from "../../../../store/selectors";
 
 interface OwnProps {
     user_id: string;
+    targetId: string;
     targetName: string;
 }
 interface StateProps {
@@ -21,7 +22,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-    deleteDate: typeof deleteDate;
+    deleteTarget: typeof deleteTarget;
     updateDate: typeof updateDate;
 }
 
@@ -120,8 +121,8 @@ const Dates: React.FC<Props> = (props) => {
                             size={15}
                             color="#e62163"
                             onClick={() => {
-                                props.deleteDate(
-                                    props.targetName,
+                                props.deleteTarget(
+                                    props.targetId,
                                     props.user_id
                                 );
                             }}
@@ -141,8 +142,8 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => ({
     updateDate: (dateOld: string, user_id: string, dateNew: string) =>
         dispatch(updateDate(dateOld, user_id, dateNew)),
-    deleteDate: (date: string, user_id: string) =>
-        dispatch(deleteDate(date, user_id))
+    deleteTarget: (target: string, user_id: string) =>
+        dispatch(deleteTarget(target, user_id))
 });
 
 export default connect<StateProps, DispatchProps>(

@@ -66,6 +66,12 @@ export const active = ["active", "פעיל", "active"];
 export const permanence = ["permanence", "הוראת קבע", "permanence"];
 export const addButton = ["Add user", "הוסף משתמש", "Agrregar usario"];
 export const addTargetButton = ["Add target", "הוסף טרגט", "Agrregar usario"];
+export const addPaymentButton = ["Add payment", "הוסף תשלום", "Agrregar pago"];
+export const readFromApiTargetsButton = [
+    "extract users target",
+    "קרא משתמשים מהטרגט",
+    "Agrregar usario"
+];
 export const editButton = ["Edit user", "ערוך משתמש", "Editar usario"];
 export const createDate = ["create date", "צור תאריכים", "crear fecha"];
 export const addDate = ["add date", "הוסף תאריכים", "agregar fecha"];

@@ -12,7 +12,8 @@ const runPythonScript = async (res, python) => {
     python.stdout.on("data", function (data) {
         console.log("Pipe data from python script ...");
         dataToSend = data.toString().split("\n");
-        dataToSend = dataToSend[dataToSend.length - 2];
+        // dataToSend = dataToSend[dataToSend.length - 2];
+        console.log(dataToSend);
     });
     // in close event we are sure that stream from child process is closed
     python.on("close", (code) => {
@@ -36,7 +37,7 @@ exports.addTarget = async (req, res, next) => {
     python.stdout.on("data", function (data) {
         console.log("Pipe data from python script ...");
         dataToSend = data.toString().split("\n");
-        dataToSend = dataToSend[dataToSend.length - 2];
+        // dataToSend = dataToSend[dataToSend.length - 2];
     });
     // in close event we are sure that stream from child process is closed
     python.on("close", (code) => {
@@ -71,6 +72,7 @@ exports.getAllProfile = async (req, res, next) => {
     python.stdout.on("data", function (data) {
         console.log("Pipe data from python script ...");
         dataToSend = data.toString().split("\n");
+        // console.log(dataToSend);
         dataToSend = dataToSend[dataToSend.length - 2];
     });
     // in close event we are sure that stream from child process is closed
