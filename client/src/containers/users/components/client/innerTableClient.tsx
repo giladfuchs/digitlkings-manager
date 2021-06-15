@@ -63,7 +63,10 @@ const UserInRow: React.FC<Props> = (props) => {
             setPayments(
                 Object.keys(props.client["payments"]).map((payment, index) => (
                     <Payment
-                        key={props.client["payments"][payment]["date"]}
+                        key={
+                            props.client["payments"][payment]["date"] +
+                            Math.random()
+                        }
                         user_id={props.client.user_id.toString()}
                         payment={props.client["payments"][payment]}
                         index={index}

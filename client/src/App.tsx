@@ -24,6 +24,9 @@ const Users = React.lazy(() => {
 const Emails = React.lazy(() => {
     return import("./containers/users/emails.components");
 });
+const Comment = React.lazy(() => {
+    return import("./containers/users/components/comment/App");
+});
 
 const BusinessLogin = React.lazy(() => {
     return import("./containers/auth/login/login");
@@ -70,7 +73,8 @@ const App: React.FC<Props> = (props) => {
                 <Switch>
                     <Route path="/email" render={() => <Emails />} />
                     <Route path="/logout" render={() => <BusinessLogout />} />
-                    <Route path="/cl" render={() => <Clients />} />
+                    <Route path="/client" render={() => <Clients />} />
+                    <Route path="/comment" render={() => <Comment />} />
 
                     <Route path="/" render={() => <Users />} />
                 </Switch>

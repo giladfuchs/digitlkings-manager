@@ -43,6 +43,8 @@ export const loginSubTitle = [
     "Bienvenido, ingrese sus datos"
 ];
 export const emailsNav = ["Emails", "אימילים", "Emails"];
+export const clientsNav = ["clients", "לקוחות", "Emails"];
+export const commentNav = ["comments", "תגובות", "Emails"];
 
 export const home = ["users", "משתמשים", "usarios"];
 
@@ -50,6 +52,7 @@ export const clientName = ["client name", "שם לקוח", "client nombre"];
 export const usernameInstagram = ["username ", "שם משתמש", "usario"];
 export const datepaid = ["pay day", "תאריך תשלום", "pago tiempo"];
 export const paymentAmount = ["payment amount", "סכום תשלום", "pagar"];
+export const remark = ["remark", "הערות", "pagar"];
 
 export const passwordInstagram = ["password", "סיסמא", "contresana"];
 export const password = ["password", "סיסמא", "contresana"];
@@ -72,6 +75,12 @@ export const readFromApiTargetsButton = [
     "קרא משתמשים מהטרגט",
     "Agrregar usario"
 ];
+export const sortDateButton = [
+    "sort by date pay",
+    "מיין לפי תאריך תשלום",
+    "Agrregar usario"
+];
+
 export const editButton = ["Edit user", "ערוך משתמש", "Editar usario"];
 export const createDate = ["create date", "צור תאריכים", "crear fecha"];
 export const addDate = ["add date", "הוסף תאריכים", "agregar fecha"];

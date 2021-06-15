@@ -56,6 +56,14 @@ const Payments: React.FC<Props> = (props) => {
             editable: false,
             class: "line",
             style: { width: "135px", height: "33px" }
+        },
+        remark: {
+            ...plainText,
+            label: "",
+            value: props.payment ? props.payment.remark : "",
+            editable: false,
+            class: "line",
+            style: { width: "135px", height: "33px" }
         }
     });
     const [Edit, setEdit] = useState<boolean>(false);
@@ -82,7 +90,7 @@ const Payments: React.FC<Props> = (props) => {
                     return {
                         [k]: {
                             ...form[k],
-                            value: props.payment,
+                            value: props.payment[k],
                             editable: false
                         }
                     };
@@ -122,7 +130,7 @@ const Payments: React.FC<Props> = (props) => {
                         style={{
                             display: "flex",
                             flexDirection: "row",
-                            width: "300px"
+                            width: "380px"
                         }}
                         form={form}
                         setForm={setForm}
@@ -131,7 +139,13 @@ const Payments: React.FC<Props> = (props) => {
                     />
                 </td>
                 {Edit ? (
-                    <td style={{ alignItems: "center", margin: "3px" }}>
+                    <td
+                        style={{
+                            alignItems: "center",
+                            margin: "3px",
+                            zIndex: 109
+                        }}
+                    >
                         <MdCancel size={25} color="#e62163" onClick={cancel} />
                         <MdSave
                             size={25}
@@ -140,7 +154,13 @@ const Payments: React.FC<Props> = (props) => {
                         />
                     </td>
                 ) : (
-                    <td style={{ alignItems: "center", margin: "3px" }}>
+                    <td
+                        style={{
+                            alignItems: "center",
+                            margin: "3px",
+                            zIndex: 109
+                        }}
+                    >
                         <MdDelete
                             size={15}
                             color="#e62163"

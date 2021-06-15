@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "@material-ui/core": "^4.11.3",
+        "@monaco-editor/react": "^4.0.4",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.5.0",
         "@testing-library/user-event": "^7.2.1",
@@ -21,6 +22,7 @@
         "express": "^4.17.1",
         "firebase-functions": "^3.13.2",
         "json2mq": "^0.2.0",
+        "monaco-editor": "^0.25.0",
         "mongoose": "^5.9.14",
         "morgan": "^1.10.0",
         "node-sass": "^4.14.1",
@@ -30,6 +32,7 @@
         "react-dom": "^16.13.1",
         "react-icons": "^3.10.0",
         "react-loading": "^2.0.3",
+        "react-monaco-editor": "^0.43.0",
         "react-redux": "^7.2.0",
         "react-router-dom": "^5.1.2",
         "react-scripts": "3.4.1",
@@ -42,7 +45,7 @@
         "validator": "^13.0.0"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "react-scripts start  --compiler-options=\"{\\\"module\\\": \\\"commonjs\\\"}\"",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"

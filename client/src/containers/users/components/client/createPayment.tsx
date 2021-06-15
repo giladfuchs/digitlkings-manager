@@ -39,15 +39,15 @@ const CreatePayment: React.FC<Props> = (props) => {
             ...plainText,
             type: "date",
 
-            label: language.targetName[props.language]
+            label: language.datepaid[props.language]
         },
         amount: {
             ...phone,
-            label: language.targetName[props.language]
+            label: language.paymentAmount[props.language]
         },
         remark: {
             ...plainText,
-            label: language.targetName[props.language]
+            label: language.remark[props.language]
         }
     });
 
@@ -66,7 +66,14 @@ const CreatePayment: React.FC<Props> = (props) => {
         const len = props.clients[props.index]["payments"].length;
         props.postPayment(props.user_id, payment, len);
     };
-
+    const mtpay = {
+        keva: 1,
+        bit: 2,
+        transfer: 3,
+        credit: 4,
+        cash: 5,
+        other: 6
+    };
     return (
         <React.Fragment>
             {/* <div className={Style.TableForm}> */}

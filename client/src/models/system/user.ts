@@ -23,4 +23,5 @@ export type Payment = {
     date: string;
     amount: number;
     method: string;
+    remark: any;
 };

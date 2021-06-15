@@ -60,10 +60,16 @@ export const LoginCheck = () => {
                 (user) => res.data["users"][user]
             );
 
-            const clients = Object.keys(res.data["client"]).map(
-                (client) => res.data["client"][client]
-            );
-
+            const clients = Object.keys(res.data["client"])
+                .map((client) => res.data["client"][client])
+                .sort((a, b) => {
+                    if (a.permanence !== b.permanence)
+                        return a.permanence ? -1 : 1;
+                    return (
+                        a.payments[a.payments.length - 1]["date"] -
+                        b.payments[b.payments.length - 1]["date"]
+                    );
+                });
             const emails = Object.keys(emailsApi).map(
                 (email) => emailsApi[email]
             );

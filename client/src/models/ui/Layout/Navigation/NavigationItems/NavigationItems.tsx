@@ -16,10 +16,20 @@ const navigationItems: React.FC<StateProps> = (props) => (
             {language.logout[props.language]}
         </NavigationItem>
         {props.isTokenSet && (
+            <NavigationItem link="/comment">
+                {language.commentNav[props.language]}
+            </NavigationItem>
+        )}
+        {props.isTokenSet && (
+            <NavigationItem link="/client">
+                {language.clientsNav[props.language]}
+            </NavigationItem>
+        )}
+        {props.isTokenSet && (
             <NavigationItem link="/email">
                 {language.emailsNav[props.language]}
             </NavigationItem>
-        )}{" "}
+        )}
         {props.isTokenSet && (
             <NavigationItem link="/" exact>
                 {language.home[props.language]}

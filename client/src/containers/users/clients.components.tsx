@@ -67,6 +67,14 @@ const UsersComp: React.FC<Props> = (props) => {
                     >
                         {language.addButton[props.language]}
                     </Button>
+                    <Button
+                        onClick={() => setModal(true)}
+                        color="purple"
+                        disabled={true}
+                        style={{ marginRight: "25%" }}
+                    >
+                        {language.sortDateButton[props.language]}
+                    </Button>
                 </div>
 
                 <ClientComp
