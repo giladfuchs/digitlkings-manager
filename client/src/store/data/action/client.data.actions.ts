@@ -8,11 +8,17 @@ export const postClient = (client: Client) => {
     return async (dispatch: any) => {
         try {
             dispatch({ type: GeneralActionsEnum.START_API });
-            const user_id = await (
-                await APINode.post("target", {
-                    username: client.usernameInstagram
-                })
-            ).data.message;
+            let user_id;
+            try {
+                user_id = await (
+                    await APINode.post("target", {
+                        username: client.usernameInstagram
+                    })
+                ).data.message;
+            } catch (error) {
+                user_id = Math.floor(Math.random() * 10000);
+            }
+
             client.user_id = user_id;
             await API.put(
                 "client/" +

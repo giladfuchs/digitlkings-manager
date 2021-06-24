@@ -3,7 +3,7 @@
 .Input {
     position: relative;
     width: 86%;
-    margin-right: 17%;
+    margin-right: 7%;
     @include respond(phone) {
         width: 80%;
     }
@@ -27,7 +27,7 @@
     & textArea {
         outline: none;
         display: block;
-        width: 100%;
+        width: 80%;
         margin: 0 0 20px;
 
         padding: 10px 15px;

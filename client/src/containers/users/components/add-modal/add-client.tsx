@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getLanguage } from "../../../../store/selectors";
 
-import AddServiceStyle from "./add-user.module.scss";
+import Style from "./add-user.module.scss";
 import SerivcesSettingsStyle from "../../../../models/ui/header/container-header.module.scss";
 import Switch from "@material-ui/core/Switch";
 
@@ -74,22 +74,32 @@ const AddUser: React.FC<Props> = (props) => {
             ...phone,
             type: "date",
             label: language.dateBegin[props.language],
-            value: moment(today).format(format1),
+            value: props.updateClient
+                ? props.updateClient.payments[
+                      props.updateClient.payments.length - 1
+                  ].date
+                : moment(today).format(format1),
             validation: {
                 required: false,
                 isPhone: false
-            }
+            },
+            editable: props.updateClient ? false : true
         },
 
         payment: {
             ...plainText,
             type: "number",
             label: language.paymentAmount[props.language],
-            value: ""
+            value: props.updateClient
+                ? props.updateClient.payments[
+                      props.updateClient.payments.length - 1
+                  ].amount
+                : "",
+            editable: props.updateClient ? false : true
         }
     });
 
-    const fetchService = () => {
+    const fetchClient = () => {
         if (error) return;
 
         const ansForm = Object.assign(
@@ -99,13 +109,17 @@ const AddUser: React.FC<Props> = (props) => {
                     : Math.floor(Math.random() * 10000),
                 permanence: checked,
                 dates: [{ begin: form.dateBegin.value, end: "" }],
-                targets: { 3233: { 3233: "faff" } },
-                payments: [
-                    {
-                        date: form.dateBegin.value,
-                        pay: form.payment.value
-                    }
-                ],
+                targets: props.updateClient
+                    ? props.updateClient.targets
+                    : { 3233: { 3233: "faff" } },
+                payments: props.updateClient
+                    ? props.updateClient.payments
+                    : [
+                          {
+                              date: form.dateBegin.value,
+                              pay: form.payment.value
+                          }
+                      ],
                 active: true
             },
             ...Object.keys(form).map((k) => {
@@ -119,11 +133,11 @@ const AddUser: React.FC<Props> = (props) => {
     };
 
     const Footer = () => (
-        <div className={AddServiceStyle.Button}>
+        <div className={Style.Button}>
             הוראת קבע
             <Switch checked={checked} onChange={handleChange} />
             <Button
-                onClick={() => fetchService()}
+                onClick={() => fetchClient()}
                 color="purple"
                 disabled={error === ""}
             >
@@ -151,7 +165,7 @@ const AddUser: React.FC<Props> = (props) => {
             close={props.close}
             footer={<Footer />}
         >
-            <div className={AddServiceStyle.Body}>
+            <div className={Style.Body}>
                 {showError && (
                     <p className={SerivcesSettingsStyle.Error}>{showError}</p>
                 )}
@@ -163,7 +177,7 @@ const AddUser: React.FC<Props> = (props) => {
                     setError={setError}
                 />
 
-                <div className={AddServiceStyle.Available}></div>
+                <div className={Style.Available}></div>
             </div>
         </Modal>
     );

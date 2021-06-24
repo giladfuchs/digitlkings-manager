@@ -65,16 +65,16 @@ const UsersComp: React.FC<Props> = (props) => {
                         disabled={true}
                         style={{ marginRight: "25%" }}
                     >
-                        {language.addButton[props.language]}
+                        {language.addClientButton[props.language]}
                     </Button>
-                    <Button
+                    {/* <Button
                         onClick={() => setModal(true)}
                         color="purple"
                         disabled={true}
                         style={{ marginRight: "25%" }}
                     >
                         {language.sortDateButton[props.language]}
-                    </Button>
+                    </Button> */}
                 </div>
 
                 <ClientComp

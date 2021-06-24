@@ -64,11 +64,16 @@ export const LoginCheck = () => {
                 .map((client) => res.data["client"][client])
                 .sort((a, b) => {
                     if (a.permanence !== b.permanence)
-                        return a.permanence ? -1 : 1;
-                    return (
-                        a.payments[a.payments.length - 1]["date"] -
+                        return a.permanence ? 1 : -1;
+                    if (
+                        a.payments[a.payments.length - 1]["date"] !==
                         b.payments[b.payments.length - 1]["date"]
-                    );
+                    )
+                        console.log(a.payments[a.payments.length - 1]["date"]);
+
+                    return a.payments[a.payments.length - 1][
+                        "date"
+                    ].localeCompare(b.payments[b.payments.length - 1]["date"]);
                 });
             const emails = Object.keys(emailsApi).map(
                 (email) => emailsApi[email]

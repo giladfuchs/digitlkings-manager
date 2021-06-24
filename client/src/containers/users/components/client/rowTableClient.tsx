@@ -68,8 +68,8 @@ const ClientInRow: React.FC<Props> = (props) => {
                 </td>
 
                 <td>
-                    {props.client.dates[props.client.dates.length - 1][
-                        "begin"
+                    {props.client.payments[props.client.payments.length - 1][
+                        "date"
                     ] + "  "}
                 </td>
 
