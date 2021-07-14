@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[9],{185:function(t,e,n){"use strict";n.r(e);var o=n(1),c=n.n(o),u=n(28),i=n(10),l=n(3);e.default=Object(u.b)(null,(function(t){return{logoutEmployee:function(){return t(Object(l.g)())}}}))((function(t){return Object(o.useEffect)((function(){t.logoutEmployee(),window.location.reload(!1)}),[t]),c.a.createElement(i.a,{to:"/"})}))}}]);
+//# sourceMappingURL=9.ea0c2b27.chunk.js.map

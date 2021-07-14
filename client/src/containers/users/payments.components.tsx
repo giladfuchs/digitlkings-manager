@@ -19,9 +19,6 @@ import { Email } from "../../models";
 import { Button, SettingsHeader } from "../../models/ui";
 import * as language from "../../assets/language/language";
 
-import Emails from "./components/email/emails";
-import AddEmail from "./components/add-modal/add-email";
-
 interface StateProps {
     emails: Email[];
     loading: boolean;
@@ -36,50 +33,26 @@ interface DispatchProps {
 }
 type Props = DispatchProps & StateProps;
 
-const EmailsComp: React.FC<Props> = (props) => {
-    const [UserToUpdate, setUserToUpdate] = useState<Email | null>(null);
-    const [Modal, setModal] = useState<boolean>(false);
-
+const PaymentComp: React.FC<Props> = (props) => {
     const settingHeader = useCallback(
         () => <SettingsHeader title={"language.settingTitleHeader[1]"} />,
         []
     );
     const [header] = useState<JSX.Element>(settingHeader());
 
-    if (!Modal && UserToUpdate) setUserToUpdate(null);
-
-    useEffect(() => {
-        props.error === "" && !props.loading && setModal(false);
-    }, [props.error, props.loading]);
     return (
         <React.Fragment>
-            {Modal && (
-                <AddEmail
-                    title={language.addUserHeaderTitle[props.language]}
-                    close={() => setModal(false)}
-                    fetchService={
-                        UserToUpdate ? props.updateEmail : props.postEmail
-                    }
-                    updateService={UserToUpdate}
-                    error={props.error}
-                />
-            )}
             <div className={SerivcesSettingsStyle.SerivcesSettings}>
                 {header}
                 <div className={SerivcesSettingsStyle.head}>
                     <Button
-                        onClick={() => setModal(true)}
+                        // onClick={() => setModal(true)}
                         color="purple"
                         disabled={true}
                     >
                         {language.addButton[props.language]}
                     </Button>
                 </div>
-
-                <Emails
-                    setModal={setModal}
-                    setServiceToUpdate={setUserToUpdate}
-                />
             </div>
         </React.Fragment>
     );
@@ -101,4 +74,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 export default connect<StateProps, DispatchProps>(
     mapStateToProps,
     mapDispatchToProps
-)(EmailsComp);
+)(PaymentComp);

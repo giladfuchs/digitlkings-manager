@@ -45,6 +45,7 @@ export const loginSubTitle = [
 export const emailsNav = ["Emails", "אימילים", "Emails"];
 export const clientsNav = ["clients", "לקוחות", "Emails"];
 export const commentNav = ["comments", "תגובות", "Emails"];
+export const paymentNav = ["Payments", "תשלומים", "Pagas"];
 
 export const home = ["users", "משתמשים", "usarios"];
 
