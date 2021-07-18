@@ -11,65 +11,58 @@ import {
     getError,
     getLoading,
     getEmails,
-    getLanguage
+    getLanguage,
+    getClients
 } from "../../store/selectors";
 
-import { Email } from "../../models";
-
+import { Client } from "../../models";
+import TableInfo from "./components/payments/TableInfo";
 import { Button, SettingsHeader } from "../../models/ui";
 import * as language from "../../assets/language/language";
 
 interface StateProps {
-    emails: Email[];
+    clients: Client[];
+
     loading: boolean;
     error: string;
     language: number;
 }
 
-interface DispatchProps {
-    postEmail: typeof postEmail;
-    deleteEmail: typeof deleteEmail;
-    updateEmail: typeof updateEmail;
-}
+interface DispatchProps {}
 type Props = DispatchProps & StateProps;
 
 const PaymentComp: React.FC<Props> = (props) => {
     const settingHeader = useCallback(
-        () => <SettingsHeader title={"language.settingTitleHeader[1]"} />,
+        () => <SettingsHeader title={language.paymentHeader[props.language]} />,
         []
     );
     const [header] = useState<JSX.Element>(settingHeader());
+    const payments = props.clients
+        .map((client) =>
+            client.payments.map((pay) => {
+                return { name: client.username, ...pay };
+            })
+        )
+        .flat(Infinity);
 
     return (
         <React.Fragment>
             <div className={SerivcesSettingsStyle.SerivcesSettings}>
                 {header}
                 <div className={SerivcesSettingsStyle.head}>
-                    <Button
-                        // onClick={() => setModal(true)}
-                        color="purple"
-                        disabled={true}
-                    >
-                        {language.addButton[props.language]}
-                    </Button>
+                    <TableInfo setForm={false} tableData={payments} />
                 </div>
             </div>
         </React.Fragment>
     );
 };
 const mapStateToProps = (state: any) => ({
-    emails: getEmails(state),
+    clients: getClients(state),
     loading: getLoading(state),
     error: getError(state),
     language: getLanguage(state)
 });
-const mapDispatchToProps = (dispatch: any) => ({
-    deleteEmail: (service: Email) => dispatch(deleteEmail(service)),
-    updateEmail: (service: Email, addressOriginal) =>
-        dispatch(updateEmail(service, addressOriginal)),
-    postEmail: (form: Email, addressOriginal) =>
-        dispatch(postEmail(form, addressOriginal))
-});
+const mapDispatchToProps = (dispatch: any) => ({});
 
 export default connect<StateProps, DispatchProps>(
     mapStateToProps,

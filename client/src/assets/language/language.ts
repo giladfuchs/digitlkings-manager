@@ -72,6 +72,7 @@ export const addButton = ["Add user", "הוסף משתמש", "Agrregar usario"];
 export const addClientButton = ["Add client", "הוסף לקוח", "Agrregar client"];
 export const addTargetButton = ["Add target", "הוסף טרגט", "Agrregar usario"];
 export const addPaymentButton = ["Add payment", "הוסף תשלום", "Agrregar pago"];
+export const paymentHeader = ["payments", "תשלומים", "pago"];
 export const readFromApiTargetsButton = [
     "extract users target",
     "קרא משתמשים מהטרגט",
